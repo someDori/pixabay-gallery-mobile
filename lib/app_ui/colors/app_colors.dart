@@ -7,7 +7,7 @@ class AppColors {
   static const Color accentColor = Color(0xFF03A9F4); // Light Blue
 
   // Define text colors
-  static const Color textColor = Color(0xFF000000); // Black
+  static const Color black = Color(0xFF000000); // Black
   static const Color textLightColor = Color(0xFF757575); // Gray
 
   // Background colors

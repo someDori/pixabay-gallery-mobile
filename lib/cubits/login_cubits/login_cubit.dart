@@ -5,4 +5,15 @@ class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(const LoginInitial());
 
   void emitInitialState() => emit(const LoginInitial());
+
+  void emitEmptyLoginError() => emit(
+        LoginEmptyUsernamePassword(
+          state.loginState,
+        ),
+      );
+  void emitInvalidLoginError() => emit(
+        LoginInvalidData(
+          state.loginState,
+        ),
+      );
 }

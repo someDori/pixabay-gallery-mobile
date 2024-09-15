@@ -1,3 +1,4 @@
 const homeScreenRoute = '/home';
 const splashScreenRoute = '/';
-const loginPageRoute = '/login';
+const loginScreenRoute = '/login';
+const registerScreenRoute = '/register';

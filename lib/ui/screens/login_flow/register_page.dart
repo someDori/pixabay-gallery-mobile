@@ -4,19 +4,21 @@ import 'package:pixabay_gallery_mobile/app_ui/theme/app_spacing.dart';
 import 'package:pixabay_gallery_mobile/app_ui/theme/app_theme.dart';
 import 'package:pixabay_gallery_mobile/cubits/login_cubits/login_cubit.dart';
 import 'package:pixabay_gallery_mobile/cubits/login_cubits/login_state.dart';
-import 'package:pixabay_gallery_mobile/ui/widgets/forms/login_form.dart';
+import 'package:pixabay_gallery_mobile/ui/widgets/forms/register_form.dart';
 import 'package:pixabay_gallery_mobile/ui/widgets/loading_indicator.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<RegisterPage> {
   final _emailController = TextEditingController();
+  final _ageController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -50,15 +52,17 @@ class _LoginPageState extends State<LoginPage> {
                       children: [
                         const Spacer(),
                         Text(
-                          "Hello",
+                          "Let's create an account",
                           style: headerTextStyle,
                         ),
                         const SizedBox(
                           height: AppSpacing.sixteen,
                         ),
-                        LoginForm(
+                        RegisterForm(
+                          ageController: _ageController,
                           emailController: _emailController,
                           passwordController: _passwordController,
+                          confirmPasswordController: _confirmPasswordController,
                           formKey: _formKey,
                         ),
                         const Spacer(),

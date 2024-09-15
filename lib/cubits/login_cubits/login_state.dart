@@ -28,6 +28,14 @@ class LoginLoaded extends LoginState {
   const LoginLoaded(super.loginState);
 }
 
+class LoginEmptyUsernamePassword extends LoginState {
+  const LoginEmptyUsernamePassword(super.loginState);
+}
+
+class LoginInvalidData extends LoginState {
+  const LoginInvalidData(super.loginState);
+}
+
 class LoginError extends LoginState {
   final String error;
 

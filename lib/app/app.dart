@@ -5,8 +5,8 @@ import 'package:pixabay_gallery_mobile/ui/screens/home_page/home_page.dart';
 import 'package:pixabay_gallery_mobile/ui/screens/login_flow/login_page.dart';
 import 'package:pixabay_gallery_mobile/ui/screens/splash_page/splash_screen.dart';
 import 'package:pixabay_gallery_mobile/cubits/login_cubits/login_cubit.dart';
-
-import '../app_ui/theme/app_theme.dart';
+import 'package:pixabay_gallery_mobile/app_ui/theme/app_theme.dart';
+import 'package:pixabay_gallery_mobile/ui/screens/login_flow/register_page.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -38,7 +38,7 @@ class _AppViewState extends State<AppView> {
       themeMode: ThemeMode.light,
       theme: const AppTheme().themeData,
       routes: defineAppRoutes(),
-      initialRoute: loginPageRoute,
+      initialRoute: loginScreenRoute,
     );
   }
 
@@ -46,7 +46,8 @@ class _AppViewState extends State<AppView> {
     return {
       splashScreenRoute: (context) => const SplashScreen(),
       homeScreenRoute: (context) => const HomePage(),
-      loginPageRoute: (context) => const LoginPage(),
+      loginScreenRoute: (context) => const LoginPage(),
+      registerScreenRoute: (context) => const RegisterPage(),
     };
   }
 }
