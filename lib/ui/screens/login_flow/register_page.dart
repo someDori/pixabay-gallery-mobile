@@ -4,7 +4,7 @@ import 'package:pixabay_gallery_mobile/app_ui/theme/app_spacing.dart';
 import 'package:pixabay_gallery_mobile/app_ui/theme/app_theme.dart';
 import 'package:pixabay_gallery_mobile/cubits/login_cubits/login_cubit.dart';
 import 'package:pixabay_gallery_mobile/cubits/login_cubits/login_state.dart';
-import 'package:pixabay_gallery_mobile/ui/widgets/forms/register_form.dart';
+import 'package:pixabay_gallery_mobile/ui/widgets/form/register_form.dart';
 import 'package:pixabay_gallery_mobile/ui/widgets/loading_indicator.dart';
 
 class RegisterPage extends StatefulWidget {
