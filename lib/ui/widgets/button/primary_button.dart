@@ -10,7 +10,7 @@ class PrimaryButton extends StatefulWidget {
   final double? height;
   final bool? isLoading;
   final bool disabled;
-  final ButtonType buttonType; // Add a new buttonType parameter
+  final ButtonType buttonType;
 
   const PrimaryButton({
     super.key,
@@ -20,7 +20,7 @@ class PrimaryButton extends StatefulWidget {
     this.height,
     this.isLoading,
     required this.disabled,
-    this.buttonType = ButtonType.primary, // Default to primary
+    this.buttonType = ButtonType.primary,
   });
 
   @override
@@ -30,20 +30,19 @@ class PrimaryButton extends StatefulWidget {
 class _PrimaryButtonState extends State<PrimaryButton> {
   @override
   Widget build(BuildContext context) {
-    ButtonStyle buttonStyle;
-    if (widget.buttonType == ButtonType.danger) {
-      buttonStyle = dangerButtonStyle;
-    } else {
-      buttonStyle = primaryButtonStyle;
-    }
-
     return SizedBox(
       height: widget.height,
       width: widget.width,
       child: widget.isLoading ?? false
           ? const LoadingIndicator()
           : ElevatedButton(
-              style: buttonStyle,
+              style: primaryButtonStyle.copyWith(
+                backgroundColor: WidgetStateProperty.all(
+                  widget.buttonType == ButtonType.danger
+                      ? AppColors.dangerButtonBackgroundColor
+                      : AppColors.primaryButtonBackgroundColor,
+                ),
+              ),
               onPressed: widget.disabled ? null : widget.onPressed,
               child: Opacity(
                 opacity: widget.disabled ? 0.6 : 1,

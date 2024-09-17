@@ -6,7 +6,9 @@ class AppSpacing {
   static const double twelve = 12.0;
   static const double sixteen = 16.0;
   static const double twenty = 20.0;
-  static const double fourty = 40.0;
+  static const double twentyFour = 24.0;
+  static const double forty = 40.0;
+  static const double sixtyFour = 64.0;
   static const double eighty = 80.0;
 
   static const EdgeInsets fourAll = EdgeInsets.all(
@@ -29,8 +31,16 @@ class AppSpacing {
     twenty,
   );
 
+  static const EdgeInsets twentyFourAll = EdgeInsets.all(
+    twentyFour,
+  );
+
   static const EdgeInsets fortyAll = EdgeInsets.all(
-    fourty,
+    forty,
+  );
+
+  static const EdgeInsets sixtyFourAll = EdgeInsets.all(
+    sixtyFour,
   );
 
   static const EdgeInsets eightyAll = EdgeInsets.all(
@@ -55,12 +65,16 @@ class AppSpacing {
     horizontal: sixteen,
   );
 
-  static const EdgeInsets twentyHorizontal = EdgeInsets.symmetric(
-    horizontal: twenty,
+  static const EdgeInsets twentyFourHorizontal = EdgeInsets.symmetric(
+    horizontal: twentyFour,
   );
 
   static const EdgeInsets fortyHorizontal = EdgeInsets.symmetric(
-    horizontal: fourty,
+    horizontal: forty,
+  );
+
+  static const EdgeInsets sixtyFourHorizontal = EdgeInsets.symmetric(
+    horizontal: sixtyFour,
   );
 
   static const EdgeInsets eightyHorizontal = EdgeInsets.symmetric(
@@ -89,8 +103,16 @@ class AppSpacing {
     vertical: twenty,
   );
 
+  static const EdgeInsets twentyFourVertical = EdgeInsets.symmetric(
+    vertical: twentyFour,
+  );
+
   static const EdgeInsets fortyVertical = EdgeInsets.symmetric(
-    vertical: fourty,
+    vertical: forty,
+  );
+
+  static const EdgeInsets sixtyFourVertical = EdgeInsets.symmetric(
+    vertical: sixtyFour,
   );
 
   static const EdgeInsets eightyVertical = EdgeInsets.symmetric(

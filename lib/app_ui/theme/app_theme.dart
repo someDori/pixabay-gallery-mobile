@@ -27,6 +27,14 @@ TextStyle headerTextStyle = const TextStyle(
   height: 1.3,
 );
 
+TextStyle userDataTextStyle = const TextStyle(
+  fontSize: 16,
+  color: AppColors.black,
+  fontWeight: FontWeight.w500,
+  letterSpacing: 1.2,
+  height: 1.3,
+);
+
 TextStyle passwordToggleTextStyle = const TextStyle(
   fontSize: 14,
   color: Colors.blue,
@@ -56,18 +64,10 @@ TextStyle pictureHeaderTextStyle = const TextStyle(
   color: AppColors.accentColor,
 );
 
-// Danger Button Style
-ButtonStyle dangerButtonStyle = ButtonStyle(
+// Button Style
+ButtonStyle primaryButtonStyle = ButtonStyle(
   backgroundColor:
       WidgetStateProperty.all<Color>(AppColors.dangerButtonBackgroundColor),
   foregroundColor: WidgetStateProperty.all<Color>(AppColors.white),
-  elevation: WidgetStateProperty.all<double>(2.0),
-);
-
-// Primary Button Style
-ButtonStyle primaryButtonStyle = ButtonStyle(
-  backgroundColor:
-      WidgetStateProperty.all<Color>(AppColors.primaryButtonBackgroundColor),
-  foregroundColor: WidgetStateProperty.all<Color>(AppColors.primaryColor),
   elevation: WidgetStateProperty.all<double>(2.0),
 );

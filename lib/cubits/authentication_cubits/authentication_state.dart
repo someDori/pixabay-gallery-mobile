@@ -20,20 +20,35 @@ class AuthenticationInitial extends AuthenticationState {
   const AuthenticationInitial() : super(const MainAuthenticationState());
 }
 
-class AuthenticationUnauthenticated extends AuthenticationState {
-  const AuthenticationUnauthenticated(super.mainAuthState);
+class AuthenticationLoading extends AuthenticationState {
+  const AuthenticationLoading(super.mainAuthState);
 }
 
 class AuthenticationAuthenticated extends AuthenticationState {
-  const AuthenticationAuthenticated(super.mainAuthState);
+  final String message;
+  final String userToken;
+
+  const AuthenticationAuthenticated(
+    super.mainAuthState,
+    this.userToken,
+    this.message,
+  );
 }
 
-class AuthenticationLoading extends AuthenticationState {
-  const AuthenticationLoading(super.mainAuthState);
+class AuthenticationUnauthenticated extends AuthenticationState {
+  final String message;
+
+  const AuthenticationUnauthenticated(
+    super.mainAuthState,
+    this.message,
+  );
 }
 
 class AuthenticationError extends AuthenticationState {
   final String error;
 
   const AuthenticationError(super.mainAuthState, this.error);
+
+  @override
+  List<Object?> get props => [error];
 }

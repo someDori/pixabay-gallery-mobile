@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pixabay_gallery_mobile/app_ui/theme/app_spacing.dart';
 import 'package:pixabay_gallery_mobile/app_ui/theme/app_theme.dart';
-import 'package:pixabay_gallery_mobile/cubits/login_cubits/login_cubit.dart';
-import 'package:pixabay_gallery_mobile/cubits/login_cubits/login_state.dart';
+import 'package:pixabay_gallery_mobile/constants/routes.dart';
+import 'package:pixabay_gallery_mobile/cubits/authentication_cubits/authentication_cubit.dart';
+import 'package:pixabay_gallery_mobile/cubits/authentication_cubits/authentication_state.dart';
 import 'package:pixabay_gallery_mobile/ui/widgets/form/register_form.dart';
 import 'package:pixabay_gallery_mobile/ui/widgets/loading_indicator.dart';
 
@@ -26,18 +27,24 @@ class _LoginPageState extends State<RegisterPage> {
     return PopScope(
       canPop: false,
       child: Scaffold(
-        body: BlocBuilder<LoginCubit, LoginState>(
-          builder: (context, loginState) {
-            if (loginState is LoginLoading) {
-              return const LoadingIndicator();
-            }
-
-            if (loginState is LoginError) {
+        body: BlocConsumer<AuthenticationCubit, AuthenticationState>(
+          listener: (context, state) {
+            if (state is AuthenticationAuthenticated) {
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text("Something went wrong"),
-                ),
+                SnackBar(content: Text(state.message)),
               );
+              Navigator.of(context).pushReplacementNamed(homeScreenRoute);
+            } else if (state is AuthenticationError) {
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(state.error)),
+              );
+            }
+          },
+          builder: (context, state) {
+            if (state is AuthenticationLoading) {
+              return const LoadingIndicator();
             }
             return CustomScrollView(
               physics: const BouncingScrollPhysics(),
@@ -64,6 +71,16 @@ class _LoginPageState extends State<RegisterPage> {
                           passwordController: _passwordController,
                           confirmPasswordController: _confirmPasswordController,
                           formKey: _formKey,
+                          onLoginPressed: () {
+                            if (_formKey.currentState?.validate() ?? false) {
+                              context.read<AuthenticationCubit>().register(
+                                    _emailController.text,
+                                    _passwordController.text,
+                                    int.parse(_ageController.text),
+                                  );
+                              return;
+                            }
+                          },
                         ),
                         const Spacer(),
                       ],

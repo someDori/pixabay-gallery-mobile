@@ -1,25 +1,25 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pixabay_gallery_mobile/app_ui/theme/app_spacing.dart';
 import 'package:pixabay_gallery_mobile/constants/enums.dart';
 import 'package:pixabay_gallery_mobile/ui/widgets/form/login_form_field.dart';
 import 'package:pixabay_gallery_mobile/ui/widgets/button/primary_button.dart';
 import 'package:pixabay_gallery_mobile/constants/routes.dart';
 import 'package:pixabay_gallery_mobile/app_ui/theme/app_theme.dart';
-import 'package:pixabay_gallery_mobile/cubits/login_cubits/login_cubit.dart';
 import 'package:pixabay_gallery_mobile/constants/validator_helper.dart';
 
 class LoginForm extends StatefulWidget {
   final TextEditingController emailController;
   final TextEditingController passwordController;
   final GlobalKey<FormState> formKey;
+  final VoidCallback onLoginPressed;
 
   const LoginForm({
     super.key,
     required this.emailController,
     required this.passwordController,
     required this.formKey,
+    required this.onLoginPressed,
   });
 
   @override
@@ -39,17 +39,15 @@ class _LoginFormState extends State<LoginForm> {
             controller: widget.emailController,
             label: 'Email',
             validator: (value) {
-              String? emptyError = ValidatorHelper.validateEmptyFormField(
-                  value, 'Enter an email');
+              String? emptyError =
+                  ValidatorHelper.validateFormField(value, 'Enter an email');
               if (emptyError != null) {
-                context.read<LoginCubit>().emitEmptyLoginError();
                 return emptyError;
               }
 
-              String? invalidDataError = ValidatorHelper.validateInvalidEmail(
+              String? invalidDataError = ValidatorHelper.validateEmail(
                   value, 'Please enter a valid email address');
               if (invalidDataError != null) {
-                context.read<LoginCubit>().emitInvalidLoginError();
                 return invalidDataError;
               }
 
@@ -64,19 +62,17 @@ class _LoginFormState extends State<LoginForm> {
             label: 'Password',
             obscureText: _obscurePassword,
             validator: (value) {
-              String? emptyError = ValidatorHelper.validateEmptyFormField(
-                  value, 'Enter a password');
+              String? emptyError =
+                  ValidatorHelper.validateFormField(value, 'Enter a password');
               if (emptyError != null) {
-                context.read<LoginCubit>().emitEmptyLoginError();
                 return emptyError;
               }
 
               String? invalidPasswordError =
-                  ValidatorHelper.validateInvalidPasswordLength(
+                  ValidatorHelper.validatePasswordLength(
                 value,
               );
               if (invalidPasswordError != null) {
-                context.read<LoginCubit>().emitInvalidLoginError();
                 return invalidPasswordError;
               }
 
@@ -101,7 +97,7 @@ class _LoginFormState extends State<LoginForm> {
               disabled: false,
               height: 40,
               width: double.infinity,
-              onPressed: _login,
+              onPressed: widget.onLoginPressed,
               buttonType: ButtonType.primary,
             ),
           ),
@@ -130,31 +126,5 @@ class _LoginFormState extends State<LoginForm> {
         ],
       ),
     );
-  }
-
-  Future<void> _login() async {
-    // try {
-    //   final images = await PixabayHelper.getImages(
-    //     token: ApiKeys.pixabayApiKey,
-    //     messageBody: {'image_type': 'photo'},
-    //   );
-    //   if (images != null) {
-    //     for (var i = 0; i < images.hits!.length; i++) {
-    //       print("i: ${images.hits![i].user_id}");
-    //     }
-    //     print(images.hits?.length);
-    //     print('Images data: $images');
-    //   } else {
-    //     print('Failed to fetch images.');
-    //   }
-    // } catch (e) {
-    //   print('Error: $e');
-    // }
-
-    if (!(widget.formKey.currentState?.validate() ?? false)) {
-      return;
-    }
-    // await BlocProvider.of<AuthenticationCubit>(context).authenticateUser();
-    Navigator.of(context).pushNamed(homeScreenRoute);
   }
 }

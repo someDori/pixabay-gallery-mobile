@@ -38,7 +38,7 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
               onTap: headerAction,
               child: Icon(
                 icon,
-                size: iconSize ?? AppSpacing.fourty,
+                size: iconSize ?? AppSpacing.forty,
               ),
             ),
           ),

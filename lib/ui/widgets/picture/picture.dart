@@ -19,9 +19,6 @@ class Picture extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        border: Border.all(width: 1.0),
-      ),
       child: imageUrl != null && imageUrl!.isNotEmpty
           ? Image.network(
               imageUrl!,
