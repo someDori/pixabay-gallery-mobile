@@ -38,6 +38,7 @@ class ValidatorHelper {
         return 'Passwords should match';
       }
     }
+    return null;
   }
 
   static String? validateAge(String? value, {int min = 18, int max = 99}) {

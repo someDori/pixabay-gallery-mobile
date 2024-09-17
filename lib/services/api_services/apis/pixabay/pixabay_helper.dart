@@ -15,7 +15,6 @@ class PixabayHelper {
       if (response.statusCode == 200) {
         return ImagesModel.fromJson(response.data);
       } else {
-        print("API returned status code: ${response.statusCode}");
         return null;
       }
     } catch (e) {

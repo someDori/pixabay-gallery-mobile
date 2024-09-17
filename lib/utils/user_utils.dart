@@ -1,5 +1,3 @@
-// user_utils.dart
-
 String encodeUser(Map<String, dynamic> user) {
   return user.entries.map((e) => '${e.key}:${e.value}').join(',');
 }

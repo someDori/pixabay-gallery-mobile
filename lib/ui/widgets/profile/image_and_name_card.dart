@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pixabay_gallery_mobile/app_ui/app_ui.dart';
 import 'package:pixabay_gallery_mobile/app_ui/theme/app_spacing.dart';
 
-import '../../../app_ui/theme/app_theme.dart';
-
 class ImageAndNameCard extends StatelessWidget {
   final String? imageUrl;
   final String? username;

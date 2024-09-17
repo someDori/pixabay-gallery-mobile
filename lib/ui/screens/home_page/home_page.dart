@@ -7,7 +7,6 @@ import 'package:pixabay_gallery_mobile/constants/secrets.dart';
 import 'package:pixabay_gallery_mobile/ui/widgets/application_bar/basic_app_bar.dart';
 import 'package:pixabay_gallery_mobile/ui/widgets/picture/picture_card.dart';
 import 'package:pixabay_gallery_mobile/app_ui/theme/app_theme.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

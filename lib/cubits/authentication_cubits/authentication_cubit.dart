@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pixabay_gallery_mobile/cubits/authentication_cubits/authentication_state.dart';
 import 'package:pixabay_gallery_mobile/utils/user_utils.dart';

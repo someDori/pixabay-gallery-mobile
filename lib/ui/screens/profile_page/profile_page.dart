@@ -159,16 +159,14 @@ class _ProfilePageState extends State<ProfilePage> {
               CupertinoDialogAction(
                 child: const Text('Cancel'),
                 onPressed: () {
-                  Navigator.of(dialogContext).pop(); // Close the dialog
+                  Navigator.of(dialogContext).pop();
                 },
               ),
               CupertinoDialogAction(
                 isDestructiveAction: true,
                 onPressed: () {
-                  Navigator.of(dialogContext).pop(); // Close the dialog
-                  context
-                      .read<AuthenticationCubit>()
-                      .deleteAccount(); // Proceed with deletion
+                  Navigator.of(dialogContext).pop();
+                  context.read<AuthenticationCubit>().deleteAccount();
                 },
                 child: const Text('Delete'),
               ),

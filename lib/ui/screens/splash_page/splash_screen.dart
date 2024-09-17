@@ -5,7 +5,6 @@ import 'package:pixabay_gallery_mobile/app_ui/theme/app_spacing.dart';
 import 'package:pixabay_gallery_mobile/constants/routes.dart';
 import 'package:pixabay_gallery_mobile/cubits/authentication_cubits/authentication_cubit.dart';
 import 'package:pixabay_gallery_mobile/cubits/authentication_cubits/authentication_state.dart';
-import 'package:pixabay_gallery_mobile/ui/screens/something_went_wrong_page/semething_went_wrong_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
